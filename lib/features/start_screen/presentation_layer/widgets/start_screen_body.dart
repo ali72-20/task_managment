@@ -15,9 +15,6 @@ class StartScreenBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(start_image),
-              Text(
-                
-              )
             ],
           ),
         ),
