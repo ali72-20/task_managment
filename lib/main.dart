@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_managment/core/utilites/app_routes.dart';
 import 'package:task_managment/features/start_screen/presentation_layer/start_screen.dart';
 
 void main() {
@@ -10,9 +11,9 @@ class TaskManagment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp.router(
+      routerConfig: AppRoutes.router,
       debugShowCheckedModeBanner: false,
-      home: StartScreen(),
     );
   }
 }

@@ -12,15 +12,19 @@ class StartScreenBody extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 64),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(start_image),
-               Text(
+              AspectRatio(aspectRatio: 5 / 3, child: Image.asset(start_image)),
+              const SizedBox(height: 128,),
+              const Text(
+                textAlign: TextAlign.center,
                 "Manage Your Life Here!",
                 style: Styles.style35,
-              )
+              ),
+              const SizedBox(height: 16,),
+              const Text("Organize your daily tasks" , style: Styles.style14,)
             ],
           ),
         ),
