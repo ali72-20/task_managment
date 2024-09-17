@@ -17,7 +17,7 @@ class StartScreenBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(start_image),
-              const Text(
+               Text(
                 "Manage Your Life Here!",
                 style: Styles.style35,
               )
