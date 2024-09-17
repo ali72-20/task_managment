@@ -5,6 +5,7 @@ import 'package:task_managment/features/start_screen/presentation_layer/start_sc
 abstract class AppRoutes {
   static const kStartPath = '/';
   static const kLoginPath = '/login';
+  static const kRegisterPath = '/register';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -13,6 +14,10 @@ abstract class AppRoutes {
       ),
       GoRoute(
         path: kLoginPath,
+        builder: (context, state) => const LogInScreen(),
+      ),
+      GoRoute(
+        path: kRegisterPath,
         builder: (context, state) => const LogInScreen(),
       ),
     ],

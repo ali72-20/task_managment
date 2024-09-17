@@ -9,10 +9,26 @@ class StartScreenButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      ButtonItem(button_text: 'Login', button_color: kPrimaryColor, font_color: Colors.white, onPressed: (){
-         GoRouter.of(context).pushReplacement(AppRoutes.kLoginPath);
-      }),
-    ],);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        ButtonItem(
+          button_text: 'Login',
+          button_color: kPrimaryColor,
+          font_color: Colors.white,
+          onPressed: () {
+            GoRouter.of(context).pushReplacement(AppRoutes.kLoginPath);
+          },
+        ),
+        ButtonItem(
+          button_text: 'Register',
+          button_color: Colors.white,
+          font_color: Colors.black,
+          onPressed: () {
+            GoRouter.of(context).pushReplacement(AppRoutes.kRegisterPath);
+          },
+        ),
+      ],
+    );
   }
 }
