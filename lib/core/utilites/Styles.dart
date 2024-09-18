@@ -23,7 +23,11 @@ class Styles{
        fontFamily: kPrimaryFont,
        fontWeight: FontWeight.w600,
    );
-
+   static const TextStyle style24 =  TextStyle(
+     fontSize: 24,
+     fontFamily: kSecondaryColor,
+     fontWeight: FontWeight.w600,
+   );
    static const TextStyle style14 =  TextStyle(
        fontSize: 14,
        fontFamily: kPrimaryFont,

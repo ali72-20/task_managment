@@ -7,13 +7,27 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return  SafeArea(
       child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100),
+        backgroundColor: Colors.white.withOpacity(.94),
+        appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(50),
           child: CustomAppBar(),
         ),
-        body: HomeBody(),
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.blueAccent.withOpacity(.2),
+                Colors.white.withOpacity(.2),
+                Colors.yellow.withOpacity(.2)
+              ]
+            )
+          ),
+          child: const HomeBody(),
+        ),
       ),
     );
   }

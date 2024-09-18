@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:task_managment/core/utilites/Styles.dart';
-import 'package:task_managment/core/utilites/colors.dart';
 
-class TasksListViewItem extends StatelessWidget {
-  const TasksListViewItem({super.key});
+
+class InProgressListViewItem extends StatelessWidget {
+  const InProgressListViewItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +11,13 @@ class TasksListViewItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 16),
       child: Container(
         height: 100,
-        width: double.infinity,
+        width: 200,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white.withOpacity(.999)
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.orange.withOpacity(.25)
         ),
         child:  Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Text('Task title'),
             const Text('Task description'),
@@ -30,12 +30,12 @@ class TasksListViewItem extends StatelessWidget {
                   Container(
                     height: 25,
                     decoration: BoxDecoration(
-                      color: Colors.blue.withOpacity(.5),
-                      borderRadius: BorderRadius.circular(8)
+                        color: Colors.orange.withOpacity(.3),
+                        borderRadius: BorderRadius.circular(8)
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(3.0),
-                      child: Text('To Do', style: Styles.style14.copyWith(color: Colors.blue),),
+                      child: Text('In Progress', style: Styles.style14.copyWith(color: Colors.orange),),
                     ),
                   )
                 ],

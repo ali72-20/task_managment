@@ -20,7 +20,7 @@ class _CategoryRowState extends State<CategoryRow> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * .1),
+      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * .1, top: 20),
       child: SizedBox(
         height: 40,
         width: double.infinity,
