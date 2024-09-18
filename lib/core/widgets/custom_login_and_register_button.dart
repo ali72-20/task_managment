@@ -11,15 +11,22 @@ class CustomLoginAndRegisterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPress,
-      style: ElevatedButton.styleFrom(
-          backgroundColor: kPrimaryColor,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-      child: Text(
-        text,
-        style: Styles.style20.copyWith(color: Colors.white),
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 64),
+      child: ElevatedButton(
+        onPressed: onPress,
+        style: ElevatedButton.styleFrom(
+            backgroundColor: kPrimaryColor,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          child: Text(
+            text,
+            style: Styles.style20.copyWith(color: Colors.white),
+          ),
+        ),
       ),
     );
   }

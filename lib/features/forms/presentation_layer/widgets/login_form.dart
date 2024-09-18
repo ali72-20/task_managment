@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:task_managment/core/utilites/app_routes.dart';
 import 'package:task_managment/core/widgets/custom_login_and_register_button.dart';
-import 'package:task_managment/features/login/presentation_layer/widgets/input_feild.dart';
+
 
 import '../../../../core/utilites/Styles.dart';
+import 'input_feild.dart';
 
 class LoginForm extends StatelessWidget {
   LoginForm({super.key});
@@ -15,6 +16,7 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
       child: Container(
         padding: const EdgeInsets.all(24),
         width: double.infinity,
@@ -54,6 +56,11 @@ class LoginForm extends StatelessWidget {
               onPress: () {
                 GoRouter.of(context).pushReplacement(AppRoutes.kHomePath);
               },
+            ),
+            TextButton(
+              onPressed: (){}
+               ,
+              child:  Text('Create a new account', style: Styles.style14.copyWith(color: Colors.black),),
             )
           ],
         ),

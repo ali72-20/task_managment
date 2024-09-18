@@ -1,7 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:task_managment/features/home/presentation_layer/home_screen.dart';
-import 'package:task_managment/features/login/presentation_layer/login_screen.dart';
 import 'package:task_managment/features/start_screen/presentation_layer/start_screen.dart';
+import '../../features/forms/presentation_layer/login_screen.dart';
+import '../../features/forms/presentation_layer/register_screen.dart';
 
 abstract class AppRoutes {
   static const kStartPath = '/';
@@ -20,7 +21,7 @@ abstract class AppRoutes {
       ),
       GoRoute(
         path: kRegisterPath,
-        builder: (context, state) => const LogInScreen(),
+        builder: (context, state) => const RegisterScreen(),
       ),
       GoRoute(
         path: kHomePath,

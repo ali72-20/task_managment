@@ -12,7 +12,7 @@ class LoginBody extends StatelessWidget {
       child: Scaffold(
         backgroundColor: kPrimaryColor,
         resizeToAvoidBottomInset: false,
-        body: Container(
+        body: SizedBox(
           height: double.infinity,
           width: double.infinity,
           child:  Column(
