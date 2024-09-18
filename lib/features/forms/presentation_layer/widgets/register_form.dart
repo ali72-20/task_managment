@@ -51,6 +51,9 @@ class RegisterForm extends StatelessWidget {
               controller: passwordController,
               suffix_icon: Icons.password,
             ),
+            const SizedBox(
+              height: 32,
+            ),
             InputFeilde(
               hint: 'Confirm password',
               controller: confirmPasswordController,
@@ -63,9 +66,11 @@ class RegisterForm extends StatelessWidget {
               },
             ),
             TextButton(
-              onPressed: (){}
+              onPressed: (){
+                GoRouter.of(context).pushReplacement(AppRoutes.kLoginPath);
+              }
               ,
-              child:  Text('Create a new account', style: Styles.style14.copyWith(color: Colors.black),),
+              child:  Text('Already have an account', style: Styles.style14.copyWith(color: Colors.black),),
             )
           ],
         ),
