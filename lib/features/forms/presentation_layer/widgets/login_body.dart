@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_managment/core/utilites/colors.dart';
 import 'login_form.dart';
-import 'login_texts.dart';
+import 'custom_texts.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({super.key});
@@ -17,7 +17,7 @@ class LoginBody extends StatelessWidget {
           width: double.infinity,
           child:  Column(
             children: [
-              const LoginTexts(),
+               CustomeText(text: "Welcome back\n you've been missed!"),
               const SizedBox(height: 64,),
               LoginForm(),
             ],

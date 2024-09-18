@@ -58,7 +58,9 @@ class LoginForm extends StatelessWidget {
               },
             ),
             TextButton(
-              onPressed: (){}
+              onPressed: (){
+                GoRouter.of(context).pushReplacement(AppRoutes.kRegisterPath);
+              }
                ,
               child:  Text('Create a new account', style: Styles.style14.copyWith(color: Colors.black),),
             )
