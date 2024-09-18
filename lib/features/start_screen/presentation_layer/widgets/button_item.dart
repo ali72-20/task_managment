@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:task_managment/core/utilites/colors.dart';
-
 import '../../../../core/utilites/Styles.dart';
 
 class ButtonItem extends StatelessWidget {
