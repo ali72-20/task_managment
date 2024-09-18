@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:task_managment/core/utilites/app_routes.dart';
 import 'package:task_managment/core/widgets/custom_login_and_register_button.dart';
 
-
 import '../../../../core/utilites/Styles.dart';
 import 'input_feild.dart';
 
@@ -15,19 +14,18 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Container(
-        padding: const EdgeInsets.all(24),
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height * .7378,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(32),
-            topRight: Radius.circular(32),
-          ),
+    return Container(
+      padding: const EdgeInsets.all(24),
+      width: double.infinity,
+      height: MediaQuery.of(context).size.height - 217,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(32),
+          topRight: Radius.circular(32),
         ),
+      ),
+      child: SingleChildScrollView(
         child: Column(
           children: [
             const Text(
@@ -51,18 +49,26 @@ class LoginForm extends StatelessWidget {
               controller: passowrdController,
               suffix_icon: Icons.password,
             ),
+            const SizedBox(
+              height: 32,
+            ),
             CustomLoginAndRegisterButton(
               text: 'Sign in',
               onPress: () {
                 GoRouter.of(context).pushReplacement(AppRoutes.kHomePath);
               },
             ),
+            const SizedBox(
+              height: 64,
+            ),
             TextButton(
-              onPressed: (){
+              onPressed: () {
                 GoRouter.of(context).pushReplacement(AppRoutes.kRegisterPath);
-              }
-               ,
-              child:  Text('Create a new account', style: Styles.style14.copyWith(color: Colors.black),),
+              },
+              child: Text(
+                'Create a new account',
+                style: Styles.style14.copyWith(color: Colors.black),
+              ),
             )
           ],
         ),

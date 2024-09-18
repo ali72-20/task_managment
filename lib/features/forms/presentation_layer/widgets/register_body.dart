@@ -19,9 +19,9 @@ class RegisterBody extends StatelessWidget {
           width: double.infinity,
           child:  Column(
             children: [
-              CustomeText(text: 'Create an account\n so you can manage your tasks'),
-              const SizedBox(height: 64,),
-              RegisterForm(),
+              CustomeText(text: 'Create an account\n you can manage your tasks'),
+              const SizedBox(height: 32,),
+              Expanded(child: RegisterForm()),
             ],
           ),
         ),

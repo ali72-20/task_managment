@@ -13,7 +13,7 @@ class CustomLoginAndRegisterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 64),
+      padding: const EdgeInsets.only(top: 16,bottom: 8),
       child: ElevatedButton(
         onPressed: onPress,
         style: ElevatedButton.styleFrom(

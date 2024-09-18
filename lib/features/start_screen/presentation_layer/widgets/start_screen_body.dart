@@ -24,7 +24,7 @@ class StartScreenBody extends StatelessWidget {
               ),
               const SizedBox(height: 16,),
               const Text("Organize your daily tasks" , style: Styles.style14,),
-              const SizedBox(height: 128,),
+              const SizedBox(height: 64,),
               const StartScreenButtons()
             ],
           ),

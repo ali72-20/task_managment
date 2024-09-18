@@ -18,8 +18,8 @@ class LoginBody extends StatelessWidget {
           child:  Column(
             children: [
                CustomeText(text: "Welcome back\n you've been missed!"),
-              const SizedBox(height: 64,),
-              LoginForm(),
+              const SizedBox(height: 51,),
+              Expanded(child: LoginForm()),
             ],
           ),
         ),
