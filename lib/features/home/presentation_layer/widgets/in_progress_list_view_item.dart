@@ -14,7 +14,7 @@ class InProgressListViewItem extends StatelessWidget {
         width: 200,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Colors.orange.withOpacity(.25)
+            color: Colors.orange.withOpacity(.16)
         ),
         child:  Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -26,7 +26,7 @@ class InProgressListViewItem extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(Icons.timer),
+                  const Icon(Icons.timer,color: Colors.orangeAccent,),
                   Container(
                     height: 25,
                     decoration: BoxDecoration(

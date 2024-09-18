@@ -26,7 +26,7 @@ class TasksListViewItem extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Icon(Icons.timer),
+                  const Icon(Icons.timer, color: Colors.blueAccent,),
                   Container(
                     height: 25,
                     decoration: BoxDecoration(
