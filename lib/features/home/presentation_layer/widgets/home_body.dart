@@ -9,7 +9,8 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Column(
       children: [
-        CategoryRow()
+        CategoryRow(),
+        
       ],
     );
   }

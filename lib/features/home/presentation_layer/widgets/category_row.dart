@@ -17,7 +17,6 @@ class _CategoryRowState extends State<CategoryRow> {
     'In Progress',
     'Done',
   ];
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,7 +34,7 @@ class _CategoryRowState extends State<CategoryRow> {
                   currentIndex = index;
                 });
               },
-              child: CategoryRowItem(text: tapBar[index], opacity: currentIndex == index? .999:.7,),
+              child: CategoryRowItem(text: tapBar[index], opacity: currentIndex == index? .999:.6,),
             );
           },
         ),
