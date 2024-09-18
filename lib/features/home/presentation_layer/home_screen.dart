@@ -10,10 +10,9 @@ class HomeScreen extends StatelessWidget {
     return const SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(200),
+          preferredSize: Size.fromHeight(100),
           child: CustomAppBar(),
         ),
-
         body: HomeBody(),
       ),
     );
