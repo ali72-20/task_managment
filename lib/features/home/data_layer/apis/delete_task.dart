@@ -1,12 +1,14 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
 
+import '../../../../core/utilites/keys.dart';
+
 
 class DeleteTask{
   final Dio dio;
   DeleteTask(this.dio);
 
-  final String path = "http://192.168.1.72:8080/api/tasks/";
+  final String path = "http://192.168.1.72:$port/api/tasks/";
   Future<int?> delete({required int id}) async{
     try{
       Response response = await dio.delete(

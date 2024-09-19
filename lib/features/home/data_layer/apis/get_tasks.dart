@@ -3,12 +3,14 @@ import 'package:dio/dio.dart';
 import 'package:task_managment/features/home/data_layer/models/task_model.dart';
 import 'package:task_managment/main.dart';
 
+import '../../../../core/utilites/keys.dart';
+
 class GetTasks{
   final Dio dio;
 
   GetTasks(this.dio);
 
-  final String path = "http://192.168.1.72:8080/api/tasks/getTasks";
+  final String path = "http://192.168.1.72:$port/api/tasks/getTasks";
   Future<List<TaskModel>?> getTasks() async{
     try{
       Response response = await dio.get(
