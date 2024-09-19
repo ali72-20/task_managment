@@ -1,7 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:task_managment/core/utilites/colors.dart';
 import 'package:task_managment/features/forms/presentation_layer/widgets/input_feild.dart';
+
+import '../../data_layer/apis/add_task.dart';
 
 class AddTaskFrom extends StatefulWidget {
   AddTaskFrom({super.key});
@@ -63,8 +67,34 @@ class _AddTaskFromState extends State<AddTaskFrom> {
                   elevation: 12
                 ),
               icon: const Icon(Icons.done_outline_sharp, color: Colors.white,),
-               onPressed: (){
-
+               onPressed: () async{
+                 int? statuecode = -1;
+                 if(formKey.currentState!.validate()) {
+                   statuecode = await AddNewTask(Dio()).createTask(
+                        title: titleController.text,
+                        description: descriptionController.text,
+                        data: dateController.text);
+                    titleController.text = "";
+                    descriptionController.text = "";
+                    dateController.text = "";
+                  }
+                 if(statuecode  == 200 || statuecode == 204){
+                   Fluttertoast.showToast(
+                       msg: "Task added successfully",
+                       toastLength: Toast.LENGTH_SHORT,
+                       backgroundColor: Colors.green,
+                       textColor: Colors.white,
+                       fontSize: 16
+                   );
+                 }else{
+                   Fluttertoast.showToast(
+                       msg: "Some thing went wrong",
+                       toastLength: Toast.LENGTH_SHORT,
+                       backgroundColor: Colors.red,
+                       textColor: Colors.white,
+                       fontSize: 16
+                   );
+                 }
                },
             )
           ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_managment/core/utilites/app_routes.dart';
+import 'package:task_managment/features/forms/data_layer/user_model.dart';
 
 void main() {
   runApp(const TaskManagment());
@@ -17,3 +18,4 @@ class TaskManagment extends StatelessWidget {
   }
 }
 
+UserModel userModel = UserModel(username: 'none', id: 0);

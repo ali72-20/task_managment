@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:task_managment/main.dart';
 
 class Login{
  final Dio dio;
@@ -21,6 +22,8 @@ class Login{
      data.add(response.data["Statue"]);
      data.add(response.data["username"]);
      data.add(response.data["id"]);
+     userModel.username = response.data["username"];
+     userModel.id = int.parse(response.data["id"]);
      return data;
    }on DioException catch(e){
      log('Error status: ${e.response?.statusCode}');
