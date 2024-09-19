@@ -25,7 +25,7 @@ abstract class AppRoutes {
       ),
       GoRoute(
         path: kHomePath,
-        builder: (context, state) => const HomeScreen(),
+        builder: (context, state) =>  HomeScreen(),
       ),
     ],
   );
