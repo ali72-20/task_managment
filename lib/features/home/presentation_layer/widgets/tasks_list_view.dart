@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:task_managment/core/utilites/app_routes.dart';
+import 'package:task_managment/core/utilites/custom_toast.dart';
 import 'package:task_managment/features/home/data_layer/apis/delete_task.dart';
 import 'package:task_managment/features/home/presentation_layer/widgets/edit_taks_ui.dart';
 import 'package:task_managment/features/home/presentation_layer/widgets/tasks_list_view_item.dart';
@@ -51,13 +52,7 @@ class _TasksListViewState extends State<TasksListView> {
                     if(code == 200 ||code == 400){
                       setState(() {
                          widget.tasks.removeAt(index);
-                         Fluttertoast.showToast(
-                             msg: "Task added successfully",
-                             toastLength: Toast.LENGTH_SHORT,
-                             backgroundColor: Colors.green,
-                             textColor: Colors.white,
-                             fontSize: 16
-                         );
+                         CustomToast.showCustomToast(msg: "Task added successfully", color:Colors.green );
                       });
                     }
                   },

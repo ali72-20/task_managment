@@ -20,8 +20,8 @@ class TasksListViewItem extends StatelessWidget {
         child:  Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-             Text(task.title),
-             Text(task.description),
+             Text(task.title,style: Styles.style16,),
+             Text(task.description, style: Styles.style16,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Row(
