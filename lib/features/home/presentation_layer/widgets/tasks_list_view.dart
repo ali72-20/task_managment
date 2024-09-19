@@ -2,9 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router/go_router.dart';
+import 'package:task_managment/core/utilites/app_routes.dart';
 import 'package:task_managment/features/home/data_layer/apis/delete_task.dart';
 import 'package:task_managment/features/home/presentation_layer/widgets/tasks_list_view_item.dart';
-
 import '../../data_layer/models/task_model.dart';
 
 class TasksListView extends StatefulWidget {
@@ -31,7 +32,9 @@ class _TasksListViewState extends State<TasksListView> {
                   icon: Icons.edit,
                   label: 'Edit',
                   backgroundColor: Colors.blue,
-                  onPressed: (context){},
+                  onPressed: (context){
+                    GoRouter.of(context).pushReplacement(AppRoutes.kEditPath);
+                  },
                 ),
               ],
             ),
