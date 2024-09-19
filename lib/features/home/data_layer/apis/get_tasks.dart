@@ -21,7 +21,7 @@ class GetTasks{
       log("response: ${response.data}");
       List<TaskModel> tasks = [];
       for(dynamic key in response.data){
-          tasks.add(TaskModel(title: key["title"], description:key["description"], statue: key["statue"],id: key["id"]));
+          tasks.add(TaskModel(title: key["title"], description:key["description"], statue: key["statue"],id: key["id"], date: key["dueDate"]));
       }
       return tasks;
     }on DioException catch(e){

@@ -10,15 +10,15 @@ class EditTasks{
   EditTasks(this.dio);
 
   final String path = "http://192.168.1.72:$port/api/tasks/";
-  Future<int?> update({required String title, required String description, required String date}) async{
+  Future<int?> update({required String title, required String statue, required String description, required String date, required int id}) async{
     try{
       Response response = await dio.put(
-          path,
+          "$path$id",
           data: {
             "title": title,
             "description": description,
             "dueDate" : date,
-            "statue": "To Do",
+            "statue":statue,
             "user":{
               "id" : userModel.id
             }

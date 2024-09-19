@@ -29,10 +29,6 @@ abstract class AppRoutes {
         path: kHomePath,
         builder: (context, state) =>  HomeScreen(),
       ),
-      GoRoute(
-        path: kEditPath,
-        builder: (context, state) =>  const EditTaksUi(),
-      ),
     ],
   );
 }

@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:task_managment/core/utilites/colors.dart';
 import 'package:task_managment/features/forms/presentation_layer/widgets/input_feild.dart';
+import 'package:task_managment/features/home/data_layer/models/task_model.dart';
 
+import '../../../../core/utilites/custom_toast.dart';
 import '../../data_layer/apis/edit_tasks.dart';
-
+List<String> list = <String>['To DO', 'In progress', 'Done'];
 
 class EditeTaskForm extends StatefulWidget {
-  EditeTaskForm({super.key});
+  EditeTaskForm({super.key, required this.task});
 
+  TaskModel task;
   @override
   State<EditeTaskForm> createState() => _EditeTaskFormState();
 }
@@ -20,9 +23,19 @@ class _EditeTaskFormState extends State<EditeTaskForm> {
   TextEditingController descriptionController = TextEditingController();
 
   TextEditingController dateController = TextEditingController();
-
+  TextEditingController statueController = TextEditingController();
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    titleController.text = widget.task.title;
+    descriptionController.text = widget.task.description;
+    dateController.text = widget.task.date;
+    statueController.text = widget.task.statue;
+  }
   final formKey = GlobalKey<FormState>();
 
+  String dropDownValue = list.first;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,6 +56,21 @@ class _EditeTaskFormState extends State<EditeTaskForm> {
               hint: 'Task description',
               controller: descriptionController,
               suffix_icon: Icons.description,
+            ),
+            const SizedBox(
+              height: 32,
+            ),
+            DropdownMenu<String>(
+              controller: statueController,
+              initialSelection: list.first,
+              onSelected: (value){
+               setState(() {
+                 dropDownValue=  value!;
+               });
+              },
+              dropdownMenuEntries: list.map<DropdownMenuEntry<String>>((String value) {
+                return DropdownMenuEntry<String>(value: value, label: value);
+              }).toList(),
             ),
             const SizedBox(
               height: 32,
@@ -71,7 +99,9 @@ class _EditeTaskFormState extends State<EditeTaskForm> {
                 int? statuecode = -1;
                 if(formKey.currentState!.validate()) {
                   statuecode = await EditTasks(Dio()).update(
+                    id: widget.task.id,
                       title: titleController.text,
+                      statue: statueController.text,
                       description: descriptionController.text,
                       date: dateController.text);
                   titleController.text = "";
@@ -79,21 +109,10 @@ class _EditeTaskFormState extends State<EditeTaskForm> {
                   dateController.text = "";
                 }
                 if(statuecode  == 200 || statuecode == 204){
-                  Fluttertoast.showToast(
-                      msg: "Task added successfully",
-                      toastLength: Toast.LENGTH_SHORT,
-                      backgroundColor: Colors.green,
-                      textColor: Colors.white,
-                      fontSize: 16
-                  );
+                  CustomToast.showCustomToast(msg: 'Task Updated successfully',color: Colors.green);
+                  Navigator.of(context).pop();
                 }else{
-                  Fluttertoast.showToast(
-                      msg: "Some thing went wrong",
-                      toastLength: Toast.LENGTH_SHORT,
-                      backgroundColor: Colors.red,
-                      textColor: Colors.white,
-                      fontSize: 16
-                  );
+                  CustomToast.showCustomToast(msg: "Some thing went wrong",color: Colors.red,);
                 }
               },
             )
