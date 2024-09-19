@@ -1,10 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:task_managment/core/utilites/Styles.dart';
-import 'package:task_managment/features/home/presentation_layer/widgets/category_row.dart';
+import 'package:task_managment/core/utilites/colors.dart';
 import 'package:task_managment/features/home/presentation_layer/widgets/tasks_list_view.dart';
+import 'package:task_managment/features/home/services/tasks_services.dart';
+import 'package:task_managment/main.dart';
 
-import 'in_progress_list_view.dart';
+
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -14,15 +15,13 @@ class HomeBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CategoryRow(),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text("Hi ${userModel.username}!",style: Styles.style24.copyWith(color: kPrimaryColor),),
+        ),
         const SizedBox(
-          height: 50,
+          height: 24,
         ),
-        const Padding(
-          padding: EdgeInsets.only(left: 8.0),
-          child: Text(textAlign:TextAlign.start,'In Progress', style: Styles.style24,),
-        ),
-        const InProgressListView(),
         Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: Text(
@@ -31,7 +30,7 @@ class HomeBody extends StatelessWidget {
             style: Styles.style24.copyWith(color: Colors.black),
           ),
         ),
-        const TasksListView(),
+        const TasksServices(),
       ],
     );
   }

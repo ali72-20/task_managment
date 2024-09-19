@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:task_managment/core/utilites/Styles.dart';
 import 'package:task_managment/core/utilites/colors.dart';
+import 'package:task_managment/features/home/data_layer/models/task_model.dart';
 
 class TasksListViewItem extends StatelessWidget {
-  const TasksListViewItem({super.key});
-
+   TasksListViewItem({super.key, required this.task});
+  TaskModel task;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,8 +20,8 @@ class TasksListViewItem extends StatelessWidget {
         child:  Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Task title'),
-            const Text('Task description'),
+             Text(task.title),
+             Text(task.description),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Row(
@@ -35,7 +36,7 @@ class TasksListViewItem extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(3.0),
-                      child: Text('To Do', style: Styles.style14.copyWith(color: Colors.blue),),
+                      child: Text(task.statue, style: Styles.style14.copyWith(color: Colors.blue),),
                     ),
                   )
                 ],

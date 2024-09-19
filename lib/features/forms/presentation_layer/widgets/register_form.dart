@@ -68,7 +68,7 @@ class RegisterForm extends StatelessWidget {
                   onPress: () async{
                     dynamic response = await Register(Dio()).register_auth(username: usernameController.text, mail: emailController.text, password: passwordController.text);
                     if(response[0] == "Ok"){
-                      GoRouter.of(context).pushReplacement(AppRoutes.kHomePath);
+                      GoRouter.of(context).pushReplacement(AppRoutes.kLoginPath);
                     }else{
                       Fluttertoast.showToast(
                           msg: "Invalid user name or password",
