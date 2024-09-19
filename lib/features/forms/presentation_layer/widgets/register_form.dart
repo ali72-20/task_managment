@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../core/utilites/Styles.dart';
 import '../../../../core/utilites/app_routes.dart';
+import '../../../../core/utilites/custom_toast.dart';
 import '../../../../core/widgets/custom_login_and_register_button.dart';
 import '../../data_layer/Apis/register.dart';
 import 'input_feild.dart';
@@ -70,13 +69,8 @@ class RegisterForm extends StatelessWidget {
                     if(response[0] == "Ok"){
                       GoRouter.of(context).pushReplacement(AppRoutes.kLoginPath);
                     }else{
-                      Fluttertoast.showToast(
-                          msg: "Invalid user name or password",
-                          toastLength: Toast.LENGTH_SHORT,
-                          backgroundColor: Colors.red,
-                          textColor: Colors.white,
-                          fontSize: 16
-                      );
+                      CustomToast.showCustomToast(msg:  "Invalid user name or password", color: Colors.red);
+
                     }
                   },
                 ),

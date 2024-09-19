@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:task_managment/core/utilites/app_routes.dart';
+import 'package:task_managment/core/utilites/custom_toast.dart';
 import 'package:task_managment/core/widgets/custom_login_and_register_button.dart';
 
 import '../../../../core/utilites/Styles.dart';
@@ -73,13 +73,7 @@ class LoginForm extends StatelessWidget {
                  if(response != null && !response.isEmpty && response[0] == "Ok"){
                    GoRouter.of(context).pushReplacement(AppRoutes.kHomePath);
                  }else{
-                   Fluttertoast.showToast(
-                     msg: "Invalid user name or password",
-                     toastLength: Toast.LENGTH_SHORT,
-                     backgroundColor: Colors.red,
-                     textColor: Colors.white,
-                     fontSize: 16
-                   );
+                   CustomToast.showCustomToast(msg:  "Invalid user name or password", color: Colors.red);
                  }
                }
               },

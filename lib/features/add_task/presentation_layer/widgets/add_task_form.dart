@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:task_managment/core/utilites/colors.dart';
 import 'package:task_managment/features/forms/presentation_layer/widgets/input_feild.dart';
 
+import '../../../../core/utilites/custom_toast.dart';
 import '../../data_layer/apis/add_task.dart';
 
 class AddTaskFrom extends StatefulWidget {
@@ -79,21 +80,9 @@ class _AddTaskFromState extends State<AddTaskFrom> {
                     dateController.text = "";
                   }
                  if(statuecode  == 200 || statuecode == 204){
-                   Fluttertoast.showToast(
-                       msg: "Task added successfully",
-                       toastLength: Toast.LENGTH_SHORT,
-                       backgroundColor: Colors.green,
-                       textColor: Colors.white,
-                       fontSize: 16
-                   );
+                   CustomToast.showCustomToast(msg: 'Task Updated successfully',color: Colors.green);
                  }else{
-                   Fluttertoast.showToast(
-                       msg: "Some thing went wrong",
-                       toastLength: Toast.LENGTH_SHORT,
-                       backgroundColor: Colors.red,
-                       textColor: Colors.white,
-                       fontSize: 16
-                   );
+                   CustomToast.showCustomToast(msg: "Some thing went wrong",color: Colors.red);
                  }
                },
             )
