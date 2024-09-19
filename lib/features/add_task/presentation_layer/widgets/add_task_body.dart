@@ -12,7 +12,7 @@ class AddTaskBody extends StatelessWidget {
         const SizedBox(height: 32,),
         const Text("Add new Task  Here", style: Styles.style24,),
         const SizedBox(height: 32,),
-        AddTaskFrom()
+        AddTaskFrom(),
       ],
     );
   }
