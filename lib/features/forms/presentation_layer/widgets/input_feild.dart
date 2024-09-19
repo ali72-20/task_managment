@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:task_managment/core/utilites/Styles.dart';
+import 'package:task_managment/core/utilites/colors.dart';
 
 
 class InputFeilde extends StatelessWidget {
@@ -26,6 +27,9 @@ class InputFeilde extends StatelessWidget {
         hintStyle: Styles.style16,
         border: const OutlineInputBorder(),
         suffixIcon: Icon(suffix_icon),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: kPrimaryColor)
+        )
       ),
     ) ;
   }
