@@ -9,7 +9,7 @@ class EditTasks{
   final Dio dio;
   EditTasks(this.dio);
 
-  final String path = "http://192.168.1.72:$port/api/tasks/";
+  final String path = "http://$iP:$port/api/tasks/";
   Future<int?> update({required String title, required String statue, required String description, required String date, required int id}) async{
     try{
       Response response = await dio.put(

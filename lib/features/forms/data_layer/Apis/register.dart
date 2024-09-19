@@ -8,7 +8,7 @@ class Register{
 
   Register(this.dio);
 
-  final String path = "http://192.168.1.72:$port/api/users/register";
+  final String path = "http://$iP:$port/api/users/register";
   Future<List<String>?> register_auth({required String username, required String password, required String mail}) async{
     try{
       Response response = await dio.post(
