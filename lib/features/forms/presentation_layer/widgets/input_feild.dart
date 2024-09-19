@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:task_managment/core/utilites/Styles.dart';
 
@@ -9,9 +10,14 @@ class InputFeilde extends StatelessWidget {
    IconData suffix_icon;
   @override
   Widget build(BuildContext context) {
-    return  TextField(
+    return TextFormField(
       controller:controller ,
-      onSubmitted: (value){
+      validator: (value){
+        if(value == null || value.isEmpty){
+          return "Required";
+        }
+      },
+      onSaved: (value){
 
       },
       decoration:  InputDecoration(

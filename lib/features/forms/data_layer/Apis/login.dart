@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
 
 class Login{
@@ -7,9 +6,8 @@ class Login{
 
  Login(this.dio);
 
- final String base = "localhost:8080";
- final String path = "localhost:8080/api/users/login";
- Future login_auth({required String username, required String password}) async{
+ final String path = "http://192.168.1.72:8080/api/users/login";
+ Future<List<String>?> login_auth({required String username, required String password}) async{
    try{
      Response response = await dio.post(
        path,
@@ -18,7 +16,12 @@ class Login{
          "password": password
        }
      );
-     return response;
+     log("response: ${response.data}");
+     List<String> data = [];
+     data.add(response.data["Statue"]);
+     data.add(response.data["username"]);
+     data.add(response.data["id"]);
+     return data;
    }on DioException catch(e){
      log('Error status: ${e.response?.statusCode}');
 
@@ -29,5 +32,6 @@ class Login{
    }catch(e){
      log("some thing went wrong: $e");
    }
+   return null;
  }
 }

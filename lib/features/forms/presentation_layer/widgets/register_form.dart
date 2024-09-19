@@ -1,17 +1,20 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/utilites/Styles.dart';
 import '../../../../core/utilites/app_routes.dart';
 import '../../../../core/widgets/custom_login_and_register_button.dart';
+import '../../data_layer/Apis/register.dart';
 import 'input_feild.dart';
 
 class RegisterForm extends StatelessWidget {
    RegisterForm({super.key});
 
-  TextEditingController mailController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,36 +42,47 @@ class RegisterForm extends StatelessWidget {
                   height: 32,
                 ),
                 InputFeilde(
+                  hint: 'username',
+                  controller: usernameController,
+                  suffix_icon: Icons.account_box,
+                ),
+                const SizedBox(
+                  height: 32,
+                ),
+                InputFeilde(
                   hint: 'Email',
-                  controller: mailController,
+                  controller: emailController,
                   suffix_icon: Icons.mail,
                 ),
                 const SizedBox(
                   height: 32,
                 ),
                 InputFeilde(
-                  hint: 'Password',
+                  hint: 'password',
                   controller: passwordController,
                   suffix_icon: Icons.password,
-                ),
-                const SizedBox(
-                  height: 32,
-                ),
-                InputFeilde(
-                  hint: 'Confirm password',
-                  controller: confirmPasswordController,
-                  suffix_icon: Icons.confirmation_number,
                 ),
                 const SizedBox(height: 24,),
                 CustomLoginAndRegisterButton(
                   text: 'Sign up',
-                  onPress: () {
-                    GoRouter.of(context).pushReplacement(AppRoutes.kHomePath);
+                  onPress: () async{
+                    dynamic response = await Register(Dio()).register_auth(username: usernameController.text, mail: emailController.text, password: passwordController.text);
+                    if(response[0] == "Ok"){
+                      GoRouter.of(context).pushReplacement(AppRoutes.kHomePath);
+                    }else{
+                      Fluttertoast.showToast(
+                          msg: "Invalid user name or password",
+                          toastLength: Toast.LENGTH_SHORT,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 16
+                      );
+                    }
                   },
                 ),
                 const SizedBox(height: 24,),
                 TextButton(
-                  onPressed: (){
+                  onPressed: () async{
                     GoRouter.of(context).pushReplacement(AppRoutes.kLoginPath);
                   }
                   ,
