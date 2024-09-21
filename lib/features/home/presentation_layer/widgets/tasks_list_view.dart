@@ -49,10 +49,10 @@ class _TasksListViewState extends State<TasksListView> {
                   backgroundColor: Colors.red,
                   onPressed: (context) async{
                     int? code = await DeleteTask(Dio()).delete(id: widget.tasks[index].id);
-                    if(code == 200 ||code == 400){
+                    if(code == 200 ||code == 204){
                       setState(() {
                          widget.tasks.removeAt(index);
-                         CustomToast.showCustomToast(msg: "Task added successfully", color:Colors.green );
+                         CustomToast.showCustomToast(msg: "Task deleted successfully", color:Colors.green );
                       });
                     }
                   },
