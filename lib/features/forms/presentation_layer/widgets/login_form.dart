@@ -4,9 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:task_managment/core/utilites/app_routes.dart';
 import 'package:task_managment/core/utilites/custom_toast.dart';
 import 'package:task_managment/core/widgets/custom_login_and_register_button.dart';
-
 import '../../../../core/utilites/Styles.dart';
 import '../../data_layer/Apis/login.dart';
+import '../custom_loading_indicator.dart';
 import 'input_feild.dart';
 
 class LoginForm extends StatelessWidget {
@@ -21,7 +21,10 @@ class LoginForm extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(24),
       width: double.infinity,
-      height: MediaQuery.of(context).size.height - 217,
+      height: MediaQuery
+          .of(context)
+          .size
+          .height - 217,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -66,16 +69,23 @@ class LoginForm extends StatelessWidget {
             CustomLoginAndRegisterButton(
               text: 'Sign in',
               onPress: () async {
-               if(_formkey.currentState!.validate()){
-                 var username = mailController.text;
-                 var password = passowrdController.text;
-                 List<String>? response = await Login(Dio()).login_auth(username: username,password: password);
-                 if(response != null && !response.isEmpty && response[0] == "Ok"){
-                   GoRouter.of(context).pushReplacement(AppRoutes.kHomePath);
-                 }else{
-                   CustomToast.showCustomToast(msg:  "Invalid user name or password", color: Colors.red);
-                 }
-               }
+                if (_formkey.currentState!.validate()) {
+                  var username = mailController.text;
+                  var password = passowrdController.text;
+                  List<String>? response = await Login(Dio()).login_auth(
+                      username: username, password: password);
+                  if (response != null && !response.isEmpty &&
+                      response[0] == "Ok") {
+                    showLoadingIndicator(context);
+                    Future.delayed(const Duration(seconds: 4), () {
+                      GoRouter.of(context).pushReplacement(AppRoutes.kHomePath);
+                    });
+                  } else {
+                    CustomToast.showCustomToast(
+                        msg: "Invalid user name or password",
+                        color: Colors.red);
+                  }
+                }
               },
             ),
             const SizedBox(
@@ -95,4 +105,15 @@ class LoginForm extends StatelessWidget {
       ),
     );
   }
+
+  void showLoadingIndicator(BuildContext context) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return  const customLoadingIndicator();
+        }
+    );
+  }
 }
+
+

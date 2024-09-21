@@ -80,7 +80,7 @@ class _AddTaskFromState extends State<AddTaskFrom> {
                     dateController.text = "";
                   }
                  if(statuecode  == 200 || statuecode == 204){
-                   CustomToast.showCustomToast(msg: 'Task Updated successfully',color: Colors.green);
+                   CustomToast.showCustomToast(msg: 'Task Added successfully',color: Colors.green);
                  }else{
                    CustomToast.showCustomToast(msg: "Some thing went wrong",color: Colors.red);
                  }
