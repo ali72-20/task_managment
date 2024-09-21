@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:task_managment/core/utilites/colors.dart';
 import 'package:task_managment/features/forms/presentation_layer/widgets/input_feild.dart';
 import 'package:task_managment/features/home/data_layer/models/task_model.dart';
+import 'package:task_managment/features/home/presentation_layer/home_screen.dart';
 
 import '../../../../core/utilites/custom_toast.dart';
 import '../../data_layer/apis/edit_tasks.dart';
@@ -96,30 +97,39 @@ class _EditeTaskFormState extends State<EditeTaskForm> {
               ),
               icon: const Icon(Icons.done_outline_sharp, color: Colors.white,),
               onPressed: () async{
-                int? statuecode = -1;
-                if(formKey.currentState!.validate()) {
-                  statuecode = await EditTasks(Dio()).update(
-                    id: widget.task.id,
-                      title: titleController.text,
-                      statue: statueController.text,
-                      description: descriptionController.text,
-                      date: dateController.text);
-                  titleController.text = "";
-                  descriptionController.text = "";
-                  dateController.text = "";
-                }
-                if(statuecode  == 200 || statuecode == 204){
-                  CustomToast.showCustomToast(msg: 'Task Updated successfully',color: Colors.green);
-                  Navigator.of(context).pop();
-                }else{
-                  CustomToast.showCustomToast(msg: "Some thing went wrong",color: Colors.red,);
-                }
+                int? statuecode = await validateEditTask();
+                checkResponseStatueCode(statuecode, context);
               },
             )
           ],
         ),
       ),
     );
+  }
+
+  void checkResponseStatueCode(int? statuecode, BuildContext context) {
+       if(statuecode  == 200 || statuecode == 204){
+      CustomToast.showCustomToast(msg: 'Task Updated successfully',color: Colors.green);
+      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> HomeScreen()));
+    }else{
+      CustomToast.showCustomToast(msg: "Some thing went wrong",color: Colors.red,);
+    }
+  }
+
+  Future<int?> validateEditTask() async {
+       int? statuecode = -1;
+    if(formKey.currentState!.validate()) {
+      statuecode = await EditTasks(Dio()).update(
+        id: widget.task.id,
+          title: titleController.text,
+          statue: statueController.text,
+          description: descriptionController.text,
+          date: dateController.text);
+      titleController.text = "";
+      descriptionController.text = "";
+      dateController.text = "";
+    }
+    return statuecode;
   }
 
   Future<void> _selectDate(BuildContext context) async {
