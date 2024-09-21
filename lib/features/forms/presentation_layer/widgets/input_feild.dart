@@ -12,6 +12,7 @@ class InputFeilde extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: (hint == "Password"? true : false),
       controller:controller ,
       validator: (value){
         if(value == null || value.isEmpty){

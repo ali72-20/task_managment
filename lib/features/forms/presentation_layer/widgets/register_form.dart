@@ -57,7 +57,7 @@ class RegisterForm extends StatelessWidget {
                   height: 32,
                 ),
                 InputFeilde(
-                  hint: 'password',
+                  hint: 'Password',
                   controller: passwordController,
                   suffix_icon: Icons.password,
                 ),
@@ -67,10 +67,10 @@ class RegisterForm extends StatelessWidget {
                   onPress: () async{
                     dynamic response = await Register(Dio()).register_auth(username: usernameController.text, mail: emailController.text, password: passwordController.text);
                     if(response[0] == "Ok"){
+                      CustomToast.showCustomToast(msg: "User created Successfully", color: Colors.green);
                       GoRouter.of(context).pushReplacement(AppRoutes.kLoginPath);
                     }else{
                       CustomToast.showCustomToast(msg:  "Invalid user name or password", color: Colors.red);
-
                     }
                   },
                 ),
